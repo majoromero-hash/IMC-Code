@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patients as Partners: An Analysis of the IMC Code</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F0F4F8;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 40vh;
+            max-height: 450px;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #0A2342 0%, #2C5D8A 100%);
+        }
+    </style>
+</head>
+<body class="text-[#0A2342]">
+
+    <main class="container mx-auto p-4 md:p-8 max-w-7xl">
+
+        <section id="problem" class="text-center py-12 md:py-16">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">How the IMC Code Currently Views Patients</h1>
+            <p class="text-lg md:text-xl text-[#2C5D8A] max-w-3xl mx-auto">An analysis of 117 references reveals a system designed <span class="font-semibold">for</span> patients, not <span class="font-semibold">with</span> them.</p>
+        </section>
+        
+        <section class="bg-white rounded-2xl shadow-xl p-6 md:p-10 mb-12 md:mb-16">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div class="chart-container">
+                    <canvas id="patientChart"></canvas>
+                </div>
+                <div class="flex flex-col justify-center text-center lg:text-left">
+                    <div class="bg-[#F0F4F8] rounded-lg p-6 border-l-4 border-[#5B92E5]">
+                        <h2 class="text-6xl md:text-8xl font-bold text-[#0A2342]">0</h2>
+                        <p class="text-lg md:text-2xl font-semibold text-[#2C5D8A]">out of 117 references</p>
+                        <p class="mt-2 text-base md:text-lg">define the patient as an active partner, collaborator, or co-designer in their own care.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12 md:mb-16">
+             <h2 class="text-3xl font-bold text-center mb-10">Breakdown of Patient References in the IMC Code</h2>
+             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <p class="text-4xl font-bold text-[#0A2342] mb-2">📊 65%</p>
+                    <h3 class="text-xl font-semibold mb-2">Object of Rules (76 references)</h3>
+                    <p class="text-[#2C5D8A] mb-4">The patient is the subject of a rule or program they do not control.</p>
+                    <blockquote class="border-l-4 border-[#82AAE3] pl-4 text-sm italic">"Services provided to a patient in the context of a Patient Support Program..." (p. 33)</blockquote>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <p class="text-4xl font-bold text-[#0A2342] mb-2">👥 22%</p>
+                    <h3 class="text-xl font-semibold mb-2">Passive Beneficiary (26 references)</h3>
+                    <p class="text-[#2C5D8A] mb-4">The patient is the recipient of care or the endpoint of a process.</p>
+                    <blockquote class="border-l-4 border-[#82AAE3] pl-4 text-sm italic">"...the ultimate objective...is to improve health care for Canadian patients." (p. 57)</blockquote>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <p class="text-4xl font-bold text-[#0A2342] mb-2">📄 8%</p>
+                    <h3 class="text-xl font-semibold mb-2">Administrative Mention (9 refs)</h3>
+                    <p class="text-[#2C5D8A] mb-4">"Patient" is used in a purely structural way, like a section header.</p>
+                    <blockquote class="border-l-4 border-[#82AAE3] pl-4 text-sm italic">"Section Header: Privacy of Patient Information" (p. 12)</blockquote>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <p class="text-4xl font-bold text-[#0A2342] mb-2">💡 3%</p>
+                    <h3 class="text-xl font-semibold mb-2">Limited Agency (4 references)</h3>
+                    <p class="text-[#2C5D8A] mb-4">The patient is granted a minimal level of choice (e.g., to consent or opt-out).</p>
+                    <blockquote class="border-l-4 border-[#82AAE3] pl-4 text-sm italic">"...patients must...consent...be given the opportunity to opt out..." (p. 85)</blockquote>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6">
+                     <p class="text-4xl font-bold text-[#0A2342] mb-2">🔬 2%</p>
+                    <h3 class="text-xl font-semibold mb-2">Data Source (2 references)</h3>
+                    <p class="text-[#2C5D8A] mb-4">The patient is a source of information for research.</p>
+                    <blockquote class="border-l-4 border-[#82AAE3] pl-4 text-sm italic">"...identifying patient and prescriber needs..." (p. 97)</blockquote>
+                </div>
+
+             </div>
+        </section>
+        
+        <section id="solution" class="text-center py-12 md:py-16 gradient-bg text-white rounded-2xl shadow-2xl">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">The Path Forward: A Vision for Patients as Partners</h1>
+            <p class="text-lg md:text-xl text-[#E0E7FF] max-w-3xl mx-auto">Shifting the language is the first step toward a true partnership.</p>
+        </section>
+
+        <section class="bg-white rounded-2xl shadow-xl p-6 md:p-10 my-12 md:my-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="border-r-0 md:border-r md:pr-8 border-gray-200">
+                    <h3 class="text-2xl font-bold mb-4 text-center">Current Language: Patient as Recipient</h3>
+                    <ul class="space-y-4">
+                        <li class="p-4 bg-red-50 rounded-lg">Programs <span class="font-bold">for the benefit</span> of patients (p. 81)</li>
+                        <li class="p-4 bg-red-50 rounded-lg">Projects to <span class="font-bold">enhance patient outcomes</span> (p. 69)</li>
+                        <li class="p-4 bg-red-50 rounded-lg">Items for <span class="font-bold">distribution to patients</span> (p. 89)</li>
+                        <li class="p-4 bg-red-50 rounded-lg">Identifying <span class="font-bold">patient needs</span> (p. 97)</li>
+                    </ul>
+                </div>
+                 <div>
+                    <h3 class="text-2xl font-bold mb-4 text-center">Proposed Language: Patient as Partner</h3>
+                    <ul class="space-y-4">
+                        <li class="p-4 bg-green-50 rounded-lg">Programs <span class="font-bold">co-designed with</span> patients</li>
+                        <li class="p-4 bg-green-50 rounded-lg">Projects to <span class="font-bold">achieve patient-defined</span> outcomes</li>
+                        <li class="p-4 bg-green-50 rounded-lg">Tools <span class="font-bold">developed with patient input</span></li>
+                        <li class="p-4 bg-green-50 rounded-lg"><span class="font-bold">Including patients</span> in defining needs</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12 md:mb-16">
+            <h2 class="text-3xl font-bold text-center mb-10">Actionable Recommendations for the IMC Code</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="text-4xl mb-4">1.</div>
+                    <h3 class="text-xl font-semibold mb-2">Introduce a "Patient as Partner" Principle</h3>
+                    <p class="text-[#2C5D8A]">Formally recognize patients as essential collaborators in the design, implementation, and evaluation of all health initiatives.</p>
+                </div>
+                 <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="text-4xl mb-4">2.</div>
+                    <h3 class="text-xl font-semibold mb-2">Mandate Patient Engagement</h3>
+                    <p class="text-[#2C5D8A]">Require that Patient Support Programs and educational materials be developed with meaningful input from patients or their organizations.</p>
+                </div>
+                 <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="text-4xl mb-4">3.</div>
+                    <h3 class="text-xl font-semibold mb-2">Revise the Code's Language</h3>
+                    <p class="text-[#2C5D8A]">Systematically amend passive phrases ("for patients") to active, collaborative ones ("with patients").</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="mb-12 md:mb-16">
+            <h2 class="text-3xl font-bold text-center mb-10">Why This Matters</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <p class="text-4xl mb-3">🎯</p>
+                    <h3 class="text-xl font-semibold mb-2">Better Health Outcomes</h3>
+                    <p class="text-[#2C5D8A]">Partnership leads to programs that better meet patient needs, improving adherence and overall health.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <p class="text-4xl mb-3">🤝</p>
+                    <h3 class="text-xl font-semibold mb-2">Increased Trust</h3>
+                    <p class="text-[#2C5D8A]">Transparency and collaboration build essential trust between the patient community and the industry.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <p class="text-4xl mb-3">💡</p>
+                    <h3 class="text-xl font-semibold mb-2">Meaningful Innovation</h3>
+                    <p class="text-[#2C5D8A]">Patient insights are a critical driver for creating treatments and support systems that have a real-world impact.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="text-center py-12 md:py-16 gradient-bg text-white rounded-2xl shadow-xl">
+             <h2 class="text-3xl md:text-4xl font-bold max-w-3xl mx-auto">It's time to amend the IMC Code. Let's make patients true partners in their health.</h2>
+        </section>
+        
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const ctx = document.getElementById('patientChart').getContext('2d');
+            const data = {
+                labels: [
+                    'Object of Rules',
+                    'Passive Beneficiary',
+                    'Administrative Mention',
+                    'Limited Agency',
+                    'Data Source'
+                ],
+                datasets: [{
+                    label: 'Patient References Breakdown',
+                    data: [65, 22, 8, 3, 2],
+                    backgroundColor: [
+                        '#0A2342',
+                        '#2C5D8A',
+                        '#5B92E5',
+                        '#82AAE3',
+                        '#B4C5E4'
+                    ],
+                    borderColor: '#FFFFFF',
+                    borderWidth: 4,
+                    hoverOffset: 8
+                }]
+            };
+
+            const options = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: '#0A2342',
+                            font: {
+                                size: 14,
+                                family: 'Inter, sans-serif'
+                            },
+                            padding: 20,
+                            usePointStyle: true,
+                            pointStyle: 'rectRounded'
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) {
+                                  return label.join(' ');
+                                } else {
+                                  return label;
+                                }
+                            }
+                        },
+                        bodyFont: {
+                            size: 14,
+                            family: 'Inter, sans-serif'
+                        },
+                        titleFont: {
+                            size: 16,
+                            family: 'Inter, sans-serif',
+                            weight: 'bold'
+                        },
+                        padding: 12,
+                        backgroundColor: '#0A2342',
+                        cornerRadius: 8
+                    }
+                },
+                cutout: '60%'
+            };
+
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: data,
+                options: options
+            });
+        });
+    </script>
+</body>
+</html>
