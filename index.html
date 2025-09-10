@@ -250,7 +250,7 @@
                                 let displayLabel = Array.isArray(label) ? label.join(' ') : label;
                                 return `${displayLabel}: ${value}%`;
                             },
-                            afterLabel: function(tooltipItem) {
+                            label: function(tooltipItem) {
                                 const label = tooltipItem.label;
                                 const definition = categoryDefinitions[label];
                                 if (definition) {
@@ -286,3 +286,4 @@
     </script>
 </body>
 </html>
+
