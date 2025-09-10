@@ -90,7 +90,6 @@
                     <p class="text-[#2C5D8A] mb-4">The patient is a source of information for research.</p>
                     <blockquote class="border-l-4 border-[#82AAE3] pl-4 text-sm italic">"...identifying patient and prescriber needs..." (p. 97)</blockquote>
                 </div>
-
              </div>
         </section>
         
@@ -173,6 +172,15 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const ctx = document.getElementById('patientChart').getContext('2d');
+
+            const categoryDefinitions = {
+                'Object of Rules': 'A reference is in this category when the patient is the subject of a rule or process happening to them, but which they do not control (e.g., rules governing Patient Support Programs).',
+                'Passive Beneficiary': 'This category is used when the language positions the patient as the recipient of an action (e.g., to "improve patient outcomes") without any active role in defining those outcomes.',
+                'Administrative Mention': 'This is for references where the word "patient" is used in a purely structural way, such as in a section header or table of contents, with no description of a role.',
+                'Limited Agency': 'A reference falls here if it grants the patient a minimal level of choice or control, such as the ability to "consent to" or "opt out of" a program. It hints at agency but falls short of partnership.',
+                'Data Source': 'This is for instances where the patient is described as a source of information for research or marketing, such as "identifying patient... needs."'
+            };
+
             const data = {
                 labels: [
                     'Object of Rules',
@@ -197,6 +205,25 @@
                 }]
             };
 
+            function wrapText(text, maxWidth) {
+                const words = text.split(' ');
+                let lines = [];
+                let currentLine = words[0];
+
+                for (let i = 1; i < words.length; i++) {
+                    const word = words[i];
+                    const width = currentLine.length + word.length + 1;
+                    if (width < maxWidth) {
+                        currentLine += ' ' + word;
+                    } else {
+                        lines.push(currentLine);
+                        currentLine = word;
+                    }
+                }
+                lines.push(currentLine);
+                return lines;
+            }
+
             const options = {
                 responsive: true,
                 maintainAspectRatio: false,
@@ -218,12 +245,18 @@
                         callbacks: {
                             title: function(tooltipItems) {
                                 const item = tooltipItems[0];
-                                let label = item.chart.data.labels[item.dataIndex];
-                                if (Array.isArray(label)) {
-                                  return label.join(' ');
-                                } else {
-                                  return label;
+                                const label = item.chart.data.labels[item.dataIndex];
+                                const value = item.chart.data.datasets[0].data[item.dataIndex];
+                                let displayLabel = Array.isArray(label) ? label.join(' ') : label;
+                                return `${displayLabel}: ${value}%`;
+                            },
+                            afterLabel: function(tooltipItem) {
+                                const label = tooltipItem.label;
+                                const definition = categoryDefinitions[label];
+                                if (definition) {
+                                    return wrapText(definition, 40);
                                 }
+                                return '';
                             }
                         },
                         bodyFont: {
@@ -237,7 +270,8 @@
                         },
                         padding: 12,
                         backgroundColor: '#0A2342',
-                        cornerRadius: 8
+                        cornerRadius: 8,
+                        displayColors: false
                     }
                 },
                 cutout: '60%'
